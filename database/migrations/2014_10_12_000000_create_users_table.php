@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
-            $table->string('type')->enum(['COMMON', 'SHOPKEEPER']);
+            $table->enum('type', ['COMMON', 'SHOPKEEPER']);
             $table->string('password');
-            $table->boolean('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

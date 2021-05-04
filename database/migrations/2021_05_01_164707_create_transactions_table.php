@@ -17,11 +17,12 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('payer_wallet_id');
             $table->unsignedBigInteger('payee_wallet_id');
-            $table->foreign('payer_wallet_id')->references('id')->on('wallets')->onDelete('cascade');
-            $table->foreign('payee_wallet_id')->references('id')->on('wallets')->onDelete('cascade');
+            $table->foreign('payer_wallet_id')->references('id')->on('wallets');
+            $table->foreign('payee_wallet_id')->references('id')->on('wallets');
             $table->string('description')->nullable();
-            $table->bigInteger('value');
+            $table->decimal('value', 65, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

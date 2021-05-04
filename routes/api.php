@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/users',
+    [
+        'as' => 'user.store',
+        'uses' => 'UserController@create'
+    ]
+);
+Route::post('/transaction',
+    [
+        'as' => 'transaction.store',
+        'uses' => 'TransactionController@create'
+    ]
+);
