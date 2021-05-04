@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use GuzzleHttp\Client;
 use Illuminate\Http\JsonResponse;
+use App\Events\TransactionCompleted;
 use App\Http\Controllers\Controller;
 use App\Services\TransactionService;
 use App\Http\Requests\CreateTransactionRequest;
@@ -40,8 +40,7 @@ class TransactionController extends Controller
         $createTransactionResponse = $this->transactionService->create($params);
 
         if ($createTransactionResponse->success) {
-            $client = new Client();
-            $request = $client->post('http://o4d9z.mocklab.io/notify');
+            event(new TransactionCompleted());
         }
 
         return response()->json($createTransactionResponse);

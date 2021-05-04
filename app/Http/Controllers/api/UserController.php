@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Services\UserService;
-use App\Http\Requests\CreateUserRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {

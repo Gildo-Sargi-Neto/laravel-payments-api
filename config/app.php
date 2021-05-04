@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Sanitizer' => Waavi\Sanitizer\Laravel\Facade::class,
+        'RedisManager' => Illuminate\Support\Facades\Redis::class,
 
     ],
 
