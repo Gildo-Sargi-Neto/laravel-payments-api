@@ -30,7 +30,7 @@ class WalletService
             $wallet = $this->walletRepository->create($params);
         } catch (Exception $e) {
             DB::rollback();
-            return new ServiceResponse(false, 'Error creating wallet!', compact($e));
+            return new ServiceResponse(false, 'Error creating wallet!', $e->getMessage());
         }
         DB::commit();
         return new ServiceResponse(true, 'Wallet created successfully!', $wallet);

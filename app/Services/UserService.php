@@ -45,7 +45,7 @@ class UserService
             }
         } catch (Exception $e) {
             DB::rollback();
-            return new ServiceResponse(false, 'Error creating user!', compact($e));
+            return new ServiceResponse(false, 'Error creating user!', $e->getMessage());
         }
         DB::commit();
         return new ServiceResponse(true, 'User created successfully!', $user);
